@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <widget-library name="../bin/Debug/Absolom.exe" internal="true" />
+    <widget-library name="Mono.TextEditor, Version=1.0.0.0, Culture=neutral" />
+  </import>
+  <widget class="Gtk.Window" id="MainWindow" design-size="824 707">
+    <action-group name="Default">
+      <action id="FileAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">File</property>
+        <property name="ShortLabel" translatable="yes">File</property>
+      </action>
+      <action id="FileAction1">
+        <property name="Type">Action</property>
+        <property name="IsImportant">True</property>
+        <property name="Label" translatable="yes">File</property>
+        <property name="ShortLabel" translatable="yes">File</property>
+      </action>
+      <action id="EditAction">
+        <property name="Type">Action</property>
+        <property name="IsImportant">True</property>
+        <property name="Label" translatable="yes">Edit</property>
+        <property name="ShortLabel" translatable="yes">Edit</property>
+      </action>
+      <action id="newAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-new</property>
+      </action>
+      <action id="openAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-open</property>
+      </action>
+      <action id="saveAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-save</property>
+      </action>
+      <action id="addAction">
+        <property name="Type">Radio</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-add</property>
+        <property name="DrawAsRadio">False</property>
+        <property name="Active">False</property>
+        <property name="Value">0</property>
+        <property name="Group">group1</property>
+      </action>
+      <action id="HelpAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Help</property>
+        <property name="ShortLabel" translatable="yes">Help</property>
+      </action>
+    </action-group>
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Absolom</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <property name="DefaultWidth">800</property>
+    <property name="DefaultHeight">800</property>
+    <property name="AcceptFocus">False</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <child>
+      <widget class="Gtk.VBox" id="vbox2">
+        <property name="MemberName" />
+        <child>
+          <widget class="Gtk.MenuBar" id="menubar9">
+            <property name="MemberName" />
+            <node name="__gtksharp_125_Stetic_Editor_ActionMenuBar" type="Menubar">
+              <node type="Menu" action="FileAction1" />
+              <node type="Menu" action="EditAction" />
+              <node type="Menu" action="HelpAction" />
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Toolbar" id="toolbar1">
+            <property name="MemberName" />
+            <property name="ShowArrow">False</property>
+            <property name="IconSize">Menu</property>
+            <node name="__gtksharp_151_Stetic_Editor_ActionToolbar" type="Toolbar">
+              <node type="Toolitem" action="newAction" />
+              <node type="Toolitem" action="openAction" />
+              <node type="Toolitem" action="saveAction" />
+              <node type="Separator" />
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="scrolledwindow1">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="ShadowType">In</property>
+            <signal name="ScrollEvent" handler="Grid_On_Scroll_Event" />
+            <child>
+              <widget class="Gtk.Viewport" id="GtkViewport">
+                <property name="MemberName" />
+                <property name="ShadowType">None</property>
+                <child>
+                  <widget class="Gtk.DrawingArea" id="DrawArea">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <signal name="ExposeEvent" handler="DrawArea_On_Expose_Event" />
+                  </widget>
+                </child>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
