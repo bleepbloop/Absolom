@@ -67,7 +67,7 @@ public partial class MainWindow: Gtk.Window
 		
 		//Create Outline
 	    context.Color = new Cairo.Color (0, 0, 0);
-		context.LineWidth = 0.5;
+		context.LineWidth = 1;
 	    context.Stroke();
 	    
 		//Preform Garbage Collection
@@ -79,9 +79,9 @@ public partial class MainWindow: Gtk.Window
 	
 	protected virtual void Grid_On_Scroll_Event (object o, Gtk.ScrollEventArgs args)
 	{
-		ScrolledWindow scrolledWindow = (ScrolledWindow) o;
+		//ScrolledWindow scrolledWindow = (ScrolledWindow) o;
 		
-		Cairo.Context context = Gdk.CairoHelper.Create(scrolledWindow.Child.GdkWindow);
+		Cairo.Context context = Gdk.CairoHelper.Create(DrawArea.GdkWindow);
 		
 		//scrolledWindow.Children.
 		
@@ -90,28 +90,37 @@ public partial class MainWindow: Gtk.Window
 		Console.WriteLine(direction);
 		
 		if(direction.Equals("Down"))
-		{
-			scale--;
-			if(scale == 0)
+		{	
+			if(scale <= 6)
 				scale++;
+			else
+				scale--;
 		}
 		else
 		{
 			scale++;
 		}
 		
-		Gdk.Window window = this.GdkWindow;
-		
 		int width = 0;
 		int height = 0;
-		window.GetSize(out width, out height);
+		this.GdkWindow.GetSize(out width, out height);
 		
-		ArrayList grid = CreateGrid (width, height);
+		ArrayList grid = CreateGrid(width, height);
 		
 		for(int i = 0; i < grid.Count; i ++)
 		{
 			context.Rectangle((Cairo.Rectangle)grid[i]);
 		}
+		
+		//Color Box
+	    context.Color = new Cairo.Color (1, 1, 1);
+	    context.FillPreserve ();
+		
+		//Create Outline
+	    context.Color = new Cairo.Color (0, 0, 0);
+		context.LineWidth = 0.25;
+	    context.Stroke();
+
 		
 		//Preform Garbage Collection
 	    ((IDisposable) context.Target).Dispose ();                                      
